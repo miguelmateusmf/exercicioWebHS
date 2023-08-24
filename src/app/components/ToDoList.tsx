@@ -13,6 +13,15 @@ export default function Home() {
     let copy = [...taskList];
     copy.push({ name: tempName, date: tempDate });
     setTaskList(copy);
+    setTempName("");
+    setTempDate("");
+  }
+
+  function removeTask(index: number): void {
+    let copy = [...taskList];
+    copy.splice(index, 1);
+    //copy = copy.indexOf(0);
+    setTaskList(copy);
   }
 
   return (
@@ -23,7 +32,11 @@ export default function Home() {
         placeholder="Add TODO"
         onChange={(e) => setTempName(e.target.value)}
       ></input>
-      <input type="date" onChange={(e) => setTempDate(e.target.value)}></input>
+      <input
+        type="date"
+        value={tempDate}
+        onChange={(e) => setTempDate(e.target.value)}
+      ></input>
       <button
         className={"border"}
         onClick={handleSubmit}
@@ -33,9 +46,10 @@ export default function Home() {
       </button>
 
       <ul>
-        {taskList.map((task) => (
-          <li key={task.name}>
-            {task.name} {task.date}
+        {taskList.map((task, index) => (
+          <li key={index}>
+            {task.name} {task.date} {index}
+            <button onClick={(e) => removeTask(index)}>delete</button>
           </li>
         ))}
       </ul>
