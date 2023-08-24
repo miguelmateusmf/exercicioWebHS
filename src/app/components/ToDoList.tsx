@@ -6,18 +6,31 @@ export default function Home() {
     { name: "clean kitchen", date: "" },
     { name: "buy lightbulbs", date: "" },
   ]);
-  const [tempTask, setTempTask] = React.useState("");
+  const [tempName, setTempName] = React.useState("");
+  const [tempDate, setTempDate] = React.useState("");
+
+  function handleSubmit(): void {
+    let copy = [...taskList];
+    copy.push({ name: tempName, date: tempDate });
+    setTaskList(copy);
+  }
 
   return (
     <div>
       <input
         type="text"
-        value={tempTask}
+        value={tempName}
         placeholder="Add TODO"
-        onChange={(e) => setTempTask(e.target.value)}
+        onChange={(e) => setTempName(e.target.value)}
       ></input>
-      <input type="date"></input>
-      <button>Add Task</button>
+      <input type="date" onChange={(e) => setTempDate(e.target.value)}></input>
+      <button
+        className={"border"}
+        onClick={handleSubmit}
+        disabled={tempDate === "" || tempName === "" ? true : false}
+      >
+        Add Task
+      </button>
 
       <ul>
         {taskList.map((task) => (
@@ -26,6 +39,8 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      {tempName}
+      {tempDate.toString()}
     </div>
   );
 }
