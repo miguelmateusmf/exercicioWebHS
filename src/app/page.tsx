@@ -1,12 +1,9 @@
 "use client";
 import React from "react";
+import ToDoList from "./components/ToDoList";
 
 export default function Home() {
   const [nome, setNome] = React.useState("utilizador");
-  const [taskList, setTaskList] = React.useState([
-    { id: "1", name: "clean kitchen" },
-    { id: "2", name: "buy lightbulbs" },
-  ]);
 
   return (
     <main>
@@ -19,11 +16,7 @@ export default function Home() {
         ></input>
         , tens x tarefas por concluir.
       </h2>
-      <ul>
-        {taskList.map((task) => (
-          <li key={task.id}>{task.name}</li>
-        ))}
-      </ul>
+      <ToDoList />
     </main>
   );
 }
