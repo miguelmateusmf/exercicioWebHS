@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Modal from "./Modal";
 
 export default function Home() {
   const [taskList, setTaskList] = React.useState([
@@ -25,7 +26,6 @@ export default function Home() {
   function removeTask(index: number): void {
     let copy = [...taskList];
     copy.splice(index, 1);
-    //copy = copy.indexOf(0);
     setTaskList(copy);
   }
 
@@ -36,7 +36,21 @@ export default function Home() {
             id: task.id,
             name: task.name,
             date: task.date,
-            completed: task.completed === false ? true : false,
+            completed: !task.completed,
+          }
+        : task
+    );
+    setTaskList(updatedTasks);
+  }
+
+  function editTask(id: number, name: string, date: string): void {
+    const updatedTasks = taskList.map((task) =>
+      task.id === id
+        ? {
+            id: task.id,
+            name: name,
+            date: date,
+            completed: false,
           }
         : task
     );
@@ -71,12 +85,16 @@ export default function Home() {
               {task.name} {task.date} {task.id}
             </div>
             <button onClick={(e) => removeTask(index)}>delete</button>...
-            <button onClick={(e) => toogleCompleted(task.id)}>toogle</button>
+            <button onClick={(e) => toogleCompleted(task.id)}>toogle</button>...
+            <button onClick={(e) => editTask(task.id, "oi", "2023-08-26")}>
+              edit
+            </button>
           </li>
         ))}
       </ul>
       {tempName}
       {tempDate.toString()}
+      <Modal />
     </div>
   );
 }
