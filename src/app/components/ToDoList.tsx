@@ -86,15 +86,17 @@ export default function Home() {
             </div>
             <button onClick={(e) => removeTask(index)}>delete</button>...
             <button onClick={(e) => toogleCompleted(task.id)}>toogle</button>...
-            <button onClick={(e) => editTask(task.id, "oi", "2023-08-26")}>
-              edit
-            </button>
+            <Modal
+              id={task.id}
+              name={task.name}
+              date={task.date}
+              editTask={editTask}
+            />
           </li>
         ))}
       </ul>
       {tempName}
       {tempDate.toString()}
-      <Modal />
     </div>
   );
 }
