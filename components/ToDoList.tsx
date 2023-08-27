@@ -1,6 +1,6 @@
-"use client";
 import React from "react";
 import Modal from "./Modal";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface Task {
   id: number;
@@ -10,7 +10,7 @@ interface Task {
 }
 
 export default function Home() {
-  const [taskList, setTaskList] = React.useState([
+  const [taskList, setTaskList] = useLocalStorage("localSt", [
     { id: 1.1, name: "clean kitchen", date: "", completed: false },
     { id: 2.1, name: "buy lightbulbs", date: "", completed: true },
   ]);
@@ -36,13 +36,12 @@ export default function Home() {
   }
 
   function removeTask(index: number): void {
-    let copy = [...taskList];
-    copy.splice(index, 1);
+    let copy = taskList.filter((task: Task) => task.id !== index);
     setTaskList(copy);
   }
 
   function toogleCompleted(id: number): void {
-    const updatedTasks = taskList.map((task) =>
+    const updatedTasks = taskList.map((task: Task) =>
       task.id === id
         ? {
             id: task.id,
@@ -56,7 +55,7 @@ export default function Home() {
   }
 
   function editTask(id: number, name: string, date: string): void {
-    const updatedTasks = taskList.map((task) =>
+    const updatedTasks = taskList.map((task: Task) =>
       task.id === id
         ? {
             id: task.id,
@@ -107,13 +106,13 @@ export default function Home() {
         Add Task
       </button>
       <ul>
-        {taskList.map((task, index) => (
-          <li key={index}>
+        {taskList.map((task: Task) => (
+          <li key={task.id}>
             <div className={`${task.completed === true ? "line-through" : ""}`}>
               {task.name} {task.date} {task.id} ...
               {calculateDaysBetweenDates(task.date)}
             </div>
-            <button onClick={(e) => removeTask(index)}>delete</button>...
+            <button onClick={(e) => removeTask(task.id)}>delete</button>...
             <button onClick={(e) => toogleCompleted(task.id)}>toogle</button>...
             <Modal
               id={task.id}
@@ -125,15 +124,15 @@ export default function Home() {
         ))}
         asdasdasda
         {taskList
-          .filter((task) => task.completed === true || false)
-          .map((task, index) => (
-            <li key={index}>
+          .filter((task: Task) => task.completed === true || false)
+          .map((task: Task) => (
+            <li key={task.id}>
               <div
                 className={`${task.completed === true ? "line-through" : ""}`}
               >
                 {task.name} {task.date} {task.id}
               </div>
-              <button onClick={(e) => removeTask(index)}>delete</button>...
+              <button onClick={(e) => removeTask(task.id)}>delete</button>...
               <button onClick={(e) => toogleCompleted(task.id)}>toogle</button>
               ...
               <Modal

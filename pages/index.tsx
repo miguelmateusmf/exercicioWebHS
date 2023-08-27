@@ -1,6 +1,5 @@
-"use client";
 import React from "react";
-import ToDoList from "./components/ToDoList";
+import ToDoList from "../components/ToDoList";
 
 export default function Home() {
   const [nome, setNome] = React.useState("utilizador");
