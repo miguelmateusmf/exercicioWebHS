@@ -43,7 +43,7 @@ export function List({ taskList, setTaskList }: PropsList) {
   }
 
   return taskList.map((task: Task) => (
-    <li key={task.id}>
+    <li className="color-red" key={task.id}>
       <div className={`${task.completed === true ? "line-through" : ""}`}>
         {task.name} {task.date} {task.id} ...
         {calculateDaysBetweenDates(task.date)}
