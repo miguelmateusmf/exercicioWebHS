@@ -66,7 +66,7 @@ export default function Home() {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between gap-0.5 mb-3">
         <input
           className="p-4 rounded shadow focus:outline-none w-1/2"

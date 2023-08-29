@@ -31,7 +31,7 @@ export default function Modal({ id, name, date, editTask }: ModalType) {
   }
   return (
     <>
-      <button onClick={toggleModal} className="">
+      <button onClick={toggleModal}>
         <Image src={editImg} alt="edit" height="24" />
       </button>
 

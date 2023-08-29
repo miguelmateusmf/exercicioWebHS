@@ -105,7 +105,6 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
       <div className="flex items-center gap-1.5 ">
         <button
           aria-label="toogle completion"
-          className=""
           onClick={(e) => toogleCompleted(task.id)}
         >
           {task.completed === false ? (
@@ -141,11 +140,7 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
           date={task.date}
           editTask={editTask}
         />
-        <button
-          aria-label="Remove task"
-          className=""
-          onClick={(e) => removeTask(task.id)}
-        >
+        <button aria-label="Remove task" onClick={(e) => removeTask(task.id)}>
           <Image src={deleteImg} alt="blue check" height="24" />
         </button>
       </div>
