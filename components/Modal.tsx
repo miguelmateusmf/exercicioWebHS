@@ -1,4 +1,6 @@
 import React from "react";
+import editImg from "../images/edit.png";
+import Image from "next/image";
 
 interface ModalType {
   id: number;
@@ -29,8 +31,8 @@ export default function Modal({ id, name, date, editTask }: ModalType) {
   }
   return (
     <>
-      <button onClick={toggleModal} className="btn-modal">
-        Edit
+      <button onClick={toggleModal} className="">
+        <Image src={editImg} alt="edit" height="24" />
       </button>
 
       {modal && (

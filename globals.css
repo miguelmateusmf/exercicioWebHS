@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: rgb(243, 242, 242);
+}
+
 body.active-modal {
   overflow-y: hidden;
 }
 
 .btn-modal {
-  padding: 10px 20px;
-  display: flex;
-
-  font-size: 18px;
 }
 
 .modal,
