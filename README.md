@@ -20,7 +20,7 @@ Regarding the UI of the project, its important to highlight some details:
 - The buttons to add and edit tasks are disabled if, either the name or the deadline of the task are not filled. In these buttons there's a tooltip that explains that to the user.
 - The user can hover a date of a task to see how many days they have to complete the task or if it's past it's deadline. This is also displayed by a tooltip.
 - The button on the left of the task is a toogle, that can switch between the task being complete or not.
-- The buttons on the rigth are, in order, to edit the task and delete it.
+- The buttons on the right are, in order, to edit the task and delete it.
 
 ## Installation
 
