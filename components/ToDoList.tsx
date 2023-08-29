@@ -68,7 +68,7 @@ export default function Home() {
           className="p-4 rounded shadow focus:outline-none w-1/2"
           type="text"
           value={tempName}
-          placeholder="Add TODO"
+          placeholder="Add Task"
           onChange={(e) => setTempName(e.target.value)}
         ></input>
         <input
@@ -79,9 +79,14 @@ export default function Home() {
         ></input>
       </div>
       <button
-        className="mb-3 border border-webhs-blue font-semibold bg-white text-webhs-blue p-4 rounded shadow focus:outline-none w-full hover:bg-webhs-blue hover:text-white transition hover:duration-300 duration-300"
+        className={`mb-3 border border-webhs-blue font-semibold p-4 rounded shadow focus:outline-none w-full  ${
+          tempDate === "" || tempName === ""
+            ? "border-gray-500 bg-white text-grey"
+            : "border-webhs-blue bg-white text-webhs-blue hover:bg-webhs-blue hover:text-white transition hover:duration-300 duration-300 "
+        }`}
         onClick={handleSubmit}
         disabled={tempDate === "" || tempName === "" ? true : false}
+        title="Make sure to choose a name and date to submit the task!"
       >
         Add Task
       </button>

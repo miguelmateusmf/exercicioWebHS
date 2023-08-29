@@ -65,13 +65,23 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
 
     if (isDateInPast === false) {
       return (
-        <div className={`${task.completed === true ? " text-green-700" : ""}`}>
+        <div
+          title={`${
+            task.completed === true
+              ? ""
+              : `Days until the task deadline: ${calculateDaysBetweenDates(
+                  task.date
+                )}`
+          }`}
+          className={`${task.completed === true ? " text-green-700" : ""}`}
+        >
           {task.completed === true ? "Completed!" : task.date}
         </div>
       );
     } else {
       return (
         <div
+          title={`${task.completed === true ? "" : "This task is delayed!"}`}
           className={`${
             task.completed === true ? " text-green-700" : "text-red-700"
           }`}
@@ -87,20 +97,35 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
       className="flex bg-white p-4 rounded shadow justify-between mb-3"
       key={task.id}
     >
-      <div className="flex items-center gap-1.5 w-1/3 ">
+      <div className="flex items-center gap-1.5 ">
         <button className="" onClick={(e) => toogleCompleted(task.id)}>
           {task.completed === false ? (
-            <Image src={greyCheck} alt="grey check" height="24" />
+            <Image
+              src={greyCheck}
+              alt="grey check"
+              height="24"
+              min-height="24"
+            />
           ) : (
-            <Image src={blueCheck} alt="blue check" height="24" />
+            <Image
+              src={blueCheck}
+              alt="blue check"
+              height="24"
+              min-height="24"
+            />
           )}
         </button>
-        <div className={`${task.completed === true ? "line-through" : ""}`}>
-          {task.name}
+        <div
+          title={task.name}
+          className={`truncate ...${
+            task.completed === true ? "line-through" : ""
+          }`}
+        >
+          {task.name.length <= 30 ? task.name : task.name.substr(0, 30) + "..."}
         </div>
         <DaysLeft task={task} />
       </div>
-      <div className="flex gap-1.5 w-1/3 justify-end">
+      <div className="flex gap-1.5 justify-end">
         <Modal
           id={task.id}
           name={task.name}
