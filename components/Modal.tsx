@@ -60,6 +60,7 @@ export default function Modal({ id, name, date, editTask }: ModalType) {
                 onChange={(e) => setTempDate(e.target.value)}
               ></input>
               <button
+                aria-label="Edit task"
                 className={`mb-3 border border-webhs-blue font-semibold p-2 rounded shadow focus:outline-none w-full  ${
                   tempDate === "" || tempName === ""
                     ? "border-gray-500 bg-white text-grey"

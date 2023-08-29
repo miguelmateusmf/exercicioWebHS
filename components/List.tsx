@@ -1,12 +1,12 @@
 import { Dispatch } from "react";
 import { calculateDaysBetweenDates } from "../utils/calculateDaysBetweenDates";
-import Modal from "./Modal";
+
 import { Task } from "./ToDoList";
 import greyCheck from "../images/greyCheck.png";
 import blueCheck from "../images/blueCheck.png";
 import deleteImg from "../images/delete.png";
 import Image from "next/image";
-
+import Modal from "./Modal";
 interface PropsList {
   taskList: Task[];
   displayList: Task[];
@@ -94,11 +94,16 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
 
   return displayList.map((task: Task) => (
     <li
+      data-testid="task-item"
       className="flex bg-white p-4 rounded shadow justify-between mb-3"
       key={task.id}
     >
       <div className="flex items-center gap-1.5 ">
-        <button className="" onClick={(e) => toogleCompleted(task.id)}>
+        <button
+          aria-label="toogle completion"
+          className=""
+          onClick={(e) => toogleCompleted(task.id)}
+        >
           {task.completed === false ? (
             <Image
               src={greyCheck}
@@ -132,7 +137,11 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
           date={task.date}
           editTask={editTask}
         />
-        <button className="" onClick={(e) => removeTask(task.id)}>
+        <button
+          aria-label="Remove task"
+          className=""
+          onClick={(e) => removeTask(task.id)}
+        >
           <Image src={deleteImg} alt="blue check" height="24" />
         </button>
       </div>
