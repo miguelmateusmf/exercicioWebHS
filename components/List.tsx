@@ -48,7 +48,11 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
           }
         : task
     );
-    setTaskList(updatedTasks);
+    setTaskList(
+      updatedTasks
+        .slice()
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    );
   }
 
   function DaysLeft({ task }: DaysLeft) {
@@ -122,9 +126,9 @@ export function List({ taskList, displayList, setTaskList }: PropsList) {
         </button>
         <div
           title={task.name}
-          className={`truncate ...${
-            task.completed === true ? "line-through" : ""
-          }`}
+          className={`${
+            task.completed === true ? "line-through " : ""
+          }truncate ...`}
         >
           {task.name.length <= 30 ? task.name : task.name.substr(0, 30) + "..."}
         </div>

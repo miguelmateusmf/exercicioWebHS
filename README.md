@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Description
 
-## Getting Started
+In this project the users can organize the tasks that they need to do.
 
-First, run the development server:
+For this some requirements were followed and completed:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+-List tasks with names and deadlines
+-Users can add new tasks with names and deadlines to the list
+-Users can set tasks as completed
+-Users can delete tasks off of the list
+-Users can edit tasks
+-Users can filter tasks, choosing between showing all tasks, completed tasks, or incomplete tasks.
+-The tasks are locally stored through the use of the custom hook useLocalStorage
+-Unit test were done to ensure the apps viability on the files List.tsx and calculateDaysBetweenDates.ts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Regarding the UI of the project, its important to highlight some details:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-The buttons to add and edit tasks are disabled if, either the name or the deadline of the task are not filled. In these buttons there's a tooltip that explains that to the user.
+-The user can hover a date of a task to see how many days they have to complete the task or if it's past it's deadline. This is also displayed by a tooltip.
+-The button on the left of the task is a toogle, that can switch between the task being complete or not.
+-the buttons on the rigth are, in order, to edit the task and delete it.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+Clone the repository: git clone https://github.com/miguelmateusmf/exercicioWebHS.git
+Navigate to the project directory: cd yourproject
+Install dependencies: npm install
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the application: npm run dev
+Open a web browser and go to http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+React
+TypeScript
+HTML
+Next.js
+CSS
+Tailwind CSS
+Jest
+React testing libraries

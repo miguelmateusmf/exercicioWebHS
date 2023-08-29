@@ -26,7 +26,11 @@ export default function Home() {
       date: tempDate,
       completed: false,
     });
-    setTaskList(copy);
+    setTaskList(
+      copy
+        .slice()
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    );
     setTempName("");
     setTempDate("");
   }
@@ -79,7 +83,7 @@ export default function Home() {
         ></input>
       </div>
       <button
-        className={`mb-3 border border-webhs-blue font-semibold p-4 rounded shadow focus:outline-none w-full  ${
+        className={`mb-3 border font-semibold p-4 rounded shadow focus:outline-none w-full  ${
           tempDate === "" || tempName === ""
             ? "border-gray-500 bg-white text-grey"
             : "border-webhs-blue bg-white text-webhs-blue hover:bg-webhs-blue hover:text-white transition hover:duration-300 duration-300 "
@@ -128,9 +132,8 @@ export default function Home() {
         </button>
       </div>
       <div className="flex justify-between p-4 bg-gray-300 rounded shadow mb-3">
-        <div className="w-1/3">Tasks</div>
-        <div>Status</div>
-        <div className="w-1/3 flex justify-end">Actions</div>
+        <div>Tasks</div>
+        <div>Actions</div>
       </div>
       <ul>
         <PickList />
