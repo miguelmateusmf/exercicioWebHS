@@ -11,8 +11,8 @@ export interface Task {
 
 export default function Home() {
   const [taskList, setTaskList] = useLocalStorage("localSt", [
-    { id: 1.1, name: "clean kitchen", date: "", completed: false },
-    { id: 2.1, name: "buy lightbulbs", date: "", completed: true },
+    { id: 1.1, name: "clean kitchen", date: "2023-08-27", completed: false },
+    { id: 2.1, name: "buy lightbulbs", date: "2023-08-28", completed: true },
   ]);
   const [tempName, setTempName] = React.useState("");
   const [tempDate, setTempDate] = React.useState("");
